@@ -166,59 +166,59 @@ const DISH_IMAGES = {
   /* Gerçek fotoğraf varsa: dish-id ile aynı adlı .jpg dosyasını assets/img/dishes/ içine koyun */
   "arabasi-corbasi":   "assets/img/dishes/arabasi-corbasi.jpg",   /* 800×600 px */
   "mercimek-corbasi":  "assets/img/dishes/mercimek-corbasi.jpg",  /* 800×600 px */
-  "yayla-corbasi":     "assets/img/dishes/yayla-corbasi.svg",     /* → yayla-corbasi.jpg bekleniyor */
-  "koylum-corbasi":    "assets/img/dishes/koylum-corbasi.svg",    /* → koylum-corbasi.jpg bekleniyor */
-  "sehriye-corbasi":   "assets/img/dishes/sehriye-corbasi.svg",   /* → sehriye-corbasi.jpg bekleniyor */
-  "ezogelin-corbasi":  "assets/img/dishes/ezogelin-corbasi.svg",  /* → ezogelin-corbasi.jpg bekleniyor */
-  "sebzeli-corba":     "assets/img/dishes/sebzeli-corba.svg",     /* → sebzeli-corba.jpg bekleniyor */
-  "anadolu-corbasi":   "assets/img/dishes/anadolu-corbasi.svg",   /* → anadolu-corbasi.jpg bekleniyor */
+  "yayla-corbasi":     "assets/img/dishes/yayla-corbasi.jpg",     /* → yayla-corbasi.jpg bekleniyor */
+  "koylum-corbasi":    "assets/img/dishes/koylum-corbasi.jpg",    /* → koylum-corbasi.jpg bekleniyor */
+  "sehriye-corbasi":   "assets/img/dishes/sehriye-corbasi.jpg",   /* → sehriye-corbasi.jpg bekleniyor */
+  "ezogelin-corbasi":  "assets/img/dishes/ezogelin-corbasi.jpg",  /* → ezogelin-corbasi.jpg bekleniyor */
+  "sebzeli-corba":     "assets/img/dishes/sebzeli-corba.jpg",     /* → sebzeli-corba.jpg bekleniyor */
+  "anadolu-corbasi":   "assets/img/dishes/anadolu-corbasi.jpg",   /* → anadolu-corbasi.jpg bekleniyor */
   /* =====================  SULU YEMEKLER  =================== */
-  "tas-kebap":         "assets/img/dishes/tas-kebap.svg",         /* → tas-kebap.jpg bekleniyor */
-  "sulu-kofte":        "assets/img/dishes/sulu-kofte.svg",        /* → sulu-kofte.jpg bekleniyor */
-  "karniyarik":        "assets/img/dishes/karniyarik.svg",        /* → karniyarik.jpg bekleniyor */
-  "guvec":             "assets/img/dishes/guvec.svg",             /* → guvec.jpg bekleniyor */
-  "patlican-oturtma":  "assets/img/dishes/patlican-oturtma.svg",  /* → patlican-oturtma.jpg bekleniyor */
-  "mantar-sote":       "assets/img/dishes/mantar-sote.svg",       /* → mantar-sote.jpg bekleniyor */
-  "tavuk-sote":        "assets/img/dishes/tavuk-sote.svg",        /* → tavuk-sote.jpg bekleniyor */
-  "et-haslama":        "assets/img/dishes/et-haslama.svg",        /* → et-haslama.jpg bekleniyor */
-  "et-kavurma":        "assets/img/dishes/et-kavurma.svg",        /* → et-kavurma.jpg bekleniyor */
-  "manti":             "assets/img/dishes/manti.svg",             /* → manti.jpg bekleniyor */
-  "tavuk-haslama":     "assets/img/dishes/tavuk-haslama.svg",     /* → tavuk-haslama.jpg bekleniyor */
-  "etli-kuru-fasulye": "assets/img/dishes/etli-kuru-fasulye.svg", /* → etli-kuru-fasulye.jpg bekleniyor */
-  "etli-nohut":        "assets/img/dishes/etli-nohut.svg",        /* → etli-nohut.jpg bekleniyor */
-  "etli-patates":      "assets/img/dishes/etli-patates.svg",      /* → etli-patates.jpg bekleniyor */
-  "turlu":             "assets/img/dishes/turlu.svg",             /* → turlu.jpg bekleniyor */
+  "tas-kebap":         "assets/img/dishes/tas-kebap.jpg",         /* → tas-kebap.jpg bekleniyor */
+  "sulu-kofte":        "assets/img/dishes/sulu-kofte.jpg",        /* → sulu-kofte.jpg bekleniyor */
+  "karniyarik":        "assets/img/dishes/karniyarik.jpg",        /* → karniyarik.jpg bekleniyor */
+  "guvec":             "assets/img/dishes/guvec.jpg",             /* → guvec.jpg bekleniyor */
+  "patlican-oturtma":  "assets/img/dishes/patlican-oturtma.jpg",  /* → patlican-oturtma.jpg bekleniyor */
+  "mantar-sote":       "assets/img/dishes/mantar-sote.jpg",       /* → mantar-sote.jpg bekleniyor */
+  "tavuk-sote":        "assets/img/dishes/tavuk-sote.jpg",        /* → tavuk-sote.jpg bekleniyor */
+  "et-haslama":        "assets/img/dishes/et-haslama.jpg",        /* → et-haslama.jpg bekleniyor */
+  "et-kavurma":        "assets/img/dishes/et-kavurma.jpg",        /* → et-kavurma.jpg bekleniyor */
+  "manti":             "assets/img/dishes/manti.jpg",             /* → manti.jpg bekleniyor */
+  "tavuk-haslama":     "assets/img/dishes/tavuk-haslama.jpg",     /* → tavuk-haslama.jpg bekleniyor */
+  "etli-kuru-fasulye": "assets/img/dishes/etli-kuru-fasulye.jpg", /* → etli-kuru-fasulye.jpg bekleniyor */
+  "etli-nohut":        "assets/img/dishes/etli-nohut.jpg",        /* → etli-nohut.jpg bekleniyor */
+  "etli-patates":      "assets/img/dishes/etli-patates.jpg",      /* → etli-patates.jpg bekleniyor */
+  "turlu":             "assets/img/dishes/turlu.jpg",             /* → turlu.jpg bekleniyor */
   /* ======================  PİLAVLAR  ====================== */
-  "bulgur-pilavi":     "assets/img/dishes/bulgur-pilavi.svg",     /* → bulgur-pilavi.jpg bekleniyor */
-  "pirinc-pilavi":     "assets/img/dishes/pirinc-pilavi.svg",     /* → pirinc-pilavi.jpg bekleniyor */
-  "sehriye-pilavi":    "assets/img/dishes/sehriye-pilavi.svg",    /* → sehriye-pilavi.jpg bekleniyor */
-  "meyhane-pilavi":    "assets/img/dishes/meyhane-pilavi.svg",    /* → meyhane-pilavi.jpg bekleniyor */
+  "bulgur-pilavi":     "assets/img/dishes/bulgur-pilavi.jpg",     /* → bulgur-pilavi.jpg bekleniyor */
+  "pirinc-pilavi":     "assets/img/dishes/pirinc-pilavi.jpg",     /* → pirinc-pilavi.jpg bekleniyor */
+  "sehriye-pilavi":    "assets/img/dishes/sehriye-pilavi.jpg",    /* → sehriye-pilavi.jpg bekleniyor */
+  "meyhane-pilavi":    "assets/img/dishes/meyhane-pilavi.jpg",    /* → meyhane-pilavi.jpg bekleniyor */
   /* =================  IZGARA & FIRIN  ==================== */
-  "izgara-kofte":      "assets/img/dishes/izgara-kofte.svg",      /* → izgara-kofte.jpg bekleniyor */
-  "firinda-tavuk":     "assets/img/dishes/firinda-tavuk.svg",     /* → firinda-tavuk.jpg bekleniyor */
-  "firinda-kofte":     "assets/img/dishes/firinda-kofte.svg",     /* → firinda-kofte.jpg bekleniyor */
-  "firinda-pirzola":   "assets/img/dishes/firinda-pirzola.svg",   /* → firinda-pirzola.jpg bekleniyor */
+  "izgara-kofte":      "assets/img/dishes/izgara-kofte.jpg",      /* → izgara-kofte.jpg bekleniyor */
+  "firinda-tavuk":     "assets/img/dishes/firinda-tavuk.jpg",     /* → firinda-tavuk.jpg bekleniyor */
+  "firinda-kofte":     "assets/img/dishes/firinda-kofte.jpg",     /* → firinda-kofte.jpg bekleniyor */
+  "firinda-pirzola":   "assets/img/dishes/firinda-pirzola.jpg",   /* → firinda-pirzola.jpg bekleniyor */
   /* ===================  GÖZLEMELER  ====================== */
-  "ispanakli-gozleme":        "assets/img/dishes/ispanakli-gozleme.svg",
-  "domatesli-gozleme":        "assets/img/dishes/domatesli-gozleme.svg",
-  "kasarli-gozleme":          "assets/img/dishes/kasarli-gozleme.svg",
-  "kasarli-yumurtali-gozleme":"assets/img/dishes/kasarli-yumurtali-gozleme.svg",
-  "patatesli-gozleme":        "assets/img/dishes/patatesli-gozleme.svg",
+  "ispanakli-gozleme":        "assets/img/dishes/ispanakli-gozleme.jpg",
+  "domatesli-gozleme":        "assets/img/dishes/domatesli-gozleme.jpg",
+  "kasarli-gozleme":          "assets/img/dishes/kasarli-gozleme.jpg",
+  "kasarli-yumurtali-gozleme":"assets/img/dishes/kasarli-yumurtali-gozleme.jpg",
+  "patatesli-gozleme":        "assets/img/dishes/patatesli-gozleme.jpg",
   /* ======================  TOSTLAR  ====================== */
-  "kasarli-tost":      "assets/img/dishes/kasarli-tost.svg",
-  "karisik-tost":      "assets/img/dishes/karisik-tost.svg",
-  "sucuklu-tost":      "assets/img/dishes/sucuklu-tost.svg",
+  "kasarli-tost":      "assets/img/dishes/kasarli-tost.jpg",
+  "karisik-tost":      "assets/img/dishes/karisik-tost.jpg",
+  "sucuklu-tost":      "assets/img/dishes/sucuklu-tost.jpg",
   /* ======================  TATLILAR  ===================== */
-  "sutlac":            "assets/img/dishes/sutlac.svg",
-  "helva":             "assets/img/dishes/helva.svg",
-  "irmik-helvasi":     "assets/img/dishes/irmik-helvasi.svg",
-  "kemalpasa-tatlisi": "assets/img/dishes/kemalpasa-tatlisi.svg",
+  "sutlac":            "assets/img/dishes/sutlac.jpg",
+  "helva":             "assets/img/dishes/helva.jpg",
+  "irmik-helvasi":     "assets/img/dishes/irmik-helvasi.jpg",
+  "kemalpasa-tatlisi": "assets/img/dishes/kemalpasa-tatlisi.jpg",
   /* ======================  İÇECEKLER  ==================== */
-  "kola":              "assets/img/dishes/kola.svg",
-  "fanta":             "assets/img/dishes/fanta.svg",
-  "ayran":             "assets/img/dishes/ayran.svg",
-  "su":                "assets/img/dishes/su.svg",
-  "maden-suyu":        "assets/img/dishes/maden-suyu.svg"
+  "kola":              "assets/img/dishes/kola.jpg",
+  "fanta":             "assets/img/dishes/fanta.jpg",
+  "ayran":             "assets/img/dishes/ayran.jpg",
+  "su":                "assets/img/dishes/su.jpg",
+  "maden-suyu":        "assets/img/dishes/maden-suyu.jpg"
 };
 DISHES.forEach(d => { if (DISH_IMAGES[d.id]) d.img = DISH_IMAGES[d.id]; });
 
