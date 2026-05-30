@@ -115,6 +115,8 @@
 <style>
   /* ---------- Hero slider ---------- */
   .hero { position: relative; height: 100svh; min-height: 600px; max-height: 940px; overflow: hidden; }
+  @media (max-width: 480px) { .hero { min-height: min(100svh, 560px); height: 100svh; } }
+  @media (max-width: 380px) { .hero { min-height: 100svh; } }
   .slides { position: absolute; inset: 0; }
   .slide {
     position: absolute; inset: 0; opacity: 0; visibility: hidden;
@@ -210,6 +212,29 @@
   }
   .video-ctrl:hover { background: rgba(28,20,13,.7); transform: scale(1.06); }
   .video-ctrl svg { width: 24px; height: 24px; }
+
+  /* --- MOBILE (≤680px) --- */
+  @media (max-width: 680px) {
+    .slide .kicker  { font-size: clamp(1.2rem,5vw,1.7rem); margin-bottom: 4px; }
+    .slide h1       { font-size: clamp(1.6rem,6.5vw,2.2rem); margin-bottom: 12px; }
+    .slide p        { font-size: clamp(.88rem,3.4vw,1rem); margin-bottom: 18px; max-width: 90%; }
+    .slide .actions { gap: 8px; flex-direction: column; align-items: center; }
+    .slide .actions .btn { width: min(270px,88%); justify-content: center; padding: 13px 18px; font-size: .9rem; }
+    .hero-badge     { font-size: .72rem; padding: 5px 12px; }
+    .notice-wrap    { margin-top: -24px; }
+    .feature-strip  { gap: 10px; }
+    .feature .ic    { width: 48px; height: 48px; }
+    .cta-band       { padding: 28px 18px; border-radius: var(--r-lg); }
+    .cta-band .actions { flex-direction: column; align-items: center; gap: 10px; }
+    .cta-band .actions .btn { width: min(270px,100%); justify-content: center; }
+  }
+
+  /* --- TABLET (481–860px) --- */
+  @media (min-width: 481px) and (max-width: 860px) {
+    .about-grid { gap: clamp(20px,3vw,36px); }
+    .slide h1   { font-size: clamp(2rem,5vw,3rem); }
+    .slide p    { font-size: clamp(1rem,1.8vw,1.2rem); }
+  }
 </style>
 </head>
 <body class="has-dark-hero">
