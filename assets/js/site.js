@@ -13,14 +13,15 @@ const HE_INFO = {
   instagram: "https://www.instagram.com/delicehunerlieller/",
   instagramHandle: "@delicehunerlieller",
   email: "suna710671@gmail.com",
-  addressLine1: "Mimarsinan Mahallesi, Atatürk Bulvarı No: A2",
-  addressLine2: "Delice / Kırıkkale",
-  mapQuery: "Mimarsinan Mahallesi Atatürk Bulvarı Delice Kırıkkale",
-  lat: "39.9577",
-  lng: "34.0286",
-  mapsUrl:    "https://maps.google.com/maps?q=39.9577,34.0286",
-  mapsNavUrl: "https://www.google.com/maps/dir/?api=1&destination=39.9577%2C34.0286&travelmode=driving",
-  waNavMsg:   "Merhaba! Hünerli Eller'e gelmek istiyorum, yol tarifi alabilir miyim? 📍 Google Maps: https://maps.google.com/maps?q=39.9577,34.0286"
+  addressLine1: "Atatürk Bulvarı, Mimar Sinan Mah.",
+  addressLine2: "Delice / Kırıkkale — 71700",
+  addressFull: "Atatürk Bulvarı, Mimar Sinan Mah., 71700 Delice / Kırıkkale",
+  mapQuery: "Hünerli Eller Delice Kırıkkale",
+  lat: "39.945081",
+  lng: "34.031375",
+  mapsUrl:    "https://maps.app.goo.gl/JE4VUbuCgqC4bXRz9",
+  mapsNavUrl: "https://www.google.com/maps/dir/?api=1&destination=39.945081%2C34.031375&travelmode=driving",
+  waNavMsg:   "Merhaba! Hünerli Eller'e gelmek istiyorum, yol tarifi alabilir miyim? 📍 Google Maps: https://maps.app.goo.gl/JE4VUbuCgqC4bXRz9"
 };
 
 /* ---------- İkon kütüphanesi ---------- */
