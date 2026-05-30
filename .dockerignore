@@ -1,0 +1,8 @@
+screenshots/
+.git/
+.gitignore
+*.log
+_*.txt
+devserver.log
+serve-*.ps1
+README.md

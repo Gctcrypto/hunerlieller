@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ürün — Hünerli Eller</title>
+<meta name="description" content="Hünerli Eller yemek detayı: hikâyesi, içindekiler, alerjen bilgisi ve hazırlanışı.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-slot"></div>
+<main id="main"></main>
+<div id="footer-slot"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  HEUI.mountChrome("menu");
+
+  function getParam(k){ return new URLSearchParams(location.search).get(k); }
+  const id = getParam("id");
+  const d = id ? HE.getDish(id) : null;
+  const main = document.getElementById("main");
+
+  if (!d){
+    main.innerHTML = `<header class="page-hero"><div class="wrap">
+      <h1>Ürün bulunamadı</h1>
+      <p class="lead">Aradığınız lezzeti bulamadık. Tüm menümüze göz atabilirsiniz.</p>
+      <p style="margin-top:22px"><a class="btn btn-primary" href="menu.html">${HEUI.icon('arrow')} Menüye Dön</a></p>
+    </div></header>`;
+  } else {
+    const cat = HE.CATEGORIES.find(c=>c.id===d.cat);
+    const ingChips = (d.ingredients||[]).map(i=>`<span class="chip">${i}</span>`).join("");
+    const allergenBlock = (d.allergens && d.allergens.length)
+      ? `<div class="allergen-warn"><span>${HEUI.icon('info')}</span><div><b>Alerjen uyarısı:</b> Bu üründe ${d.allergens.map(a=>HE.ALLERGENS[a].label).join(", ")} bulunmaktadır. ${HEUI.allergenTags(d).replace('allergen-tags','allergen-tags" style="margin-top:10px')}</div></div>`
+      : `<div class="allergen-warn" style="background:var(--olive-wash);border-color:#cdd4be"><span style="color:var(--olive)">${HEUI.icon('check')}</span><div>Bilinen başlıca alerjen içermez. Yine de hassasiyetiniz varsa personelimize danışın.</div></div>`;
+
+    const recipeBtn = d.recipe ? `<a class="btn btn-olive" href="tarifler.html#${d.id}">${HEUI.icon('spoon')} Tarifi gör</a>` : "";
+
+    main.innerHTML = `
+    <header class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Ana Sayfa</a> / <a href="menu.html">Menü</a> / <a href="menu.html#${d.cat}">${cat.name}</a> / ${d.name}</p>
+        <div class="product-hero">
+          <div class="reveal">
+            ${HEUI.dishMedia(d)}
+          </div>
+          <div class="reveal d1">
+            <span class="eyebrow">${cat.name}</span>
+            <h1 style="margin:10px 0 14px">${d.name}</h1>
+            <p class="lead">${d.desc||""}</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+              ${recipeBtn}
+              <a class="btn btn-ghost" href="tel:${HEUI.HE_INFO.phoneTel}">${HEUI.icon('phone')} Bugün var mı? Arayın</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="wrap two-col">
+        <div class="prose reveal">
+          <span class="eyebrow">Hikâyesi</span>
+          <h2 style="margin:10px 0 18px">Soframızdaki yeri</h2>
+          <p>${d.story||""}</p>
+          <p style="color:var(--ink-faint);font-style:italic">Not: Menümüz her gün değiştiği için bu lezzet her gün bulunmayabilir. Gelmeden önce lütfen bizi arayın.</p>
+        </div>
+        <div class="side-stack">
+          <div class="info-card reveal">
+            <h3>${HEUI.icon('leaf')} İçindekiler</h3>
+            <div class="ing-list">${ingChips}</div>
+          </div>
+          <div class="info-card reveal d1">
+            <h3>${HEUI.icon('info')} Alerjen Bilgisi</h3>
+            ${allergenBlock}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <h2 class="center" style="margin-bottom:30px">Benzer lezzetler</h2>
+        <div class="dish-grid" id="related"></div>
+      </div>
+    </section>`;
+
+    // İlgili ürünler
+    const related = HE.dishesByCat(d.cat).filter(x=>x.id!==d.id).slice(0,3);
+    const relWrap = document.getElementById("related");
+    if (relWrap) relWrap.innerHTML = related.map(x=>HEUI.dishCard(x)).join("");
+
+    document.title = d.name + " — Hünerli Eller";
+  }
+
+  HEUI.initReveal();
+</script>
+</body>
+</html>

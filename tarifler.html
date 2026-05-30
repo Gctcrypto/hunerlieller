@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tarifler — Hünerli Eller | Ev Yemeği Tarifleri</title>
+<meta name="description" content="Hünerli Eller mutfağından ev yemeği tarifleri: çorbalar, sulu yemekler, gözlemeler ve tatlılar. Malzemeler, adım adım hazırlanış ve püf noktaları.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Ana Sayfa</a> / Tarifler</p>
+    <span class="eyebrow">Mutfaktan Sırlar</span>
+    <h1>Ev yemeği tarifleri</h1>
+    <p class="lead">Soframızdaki lezzetlerin hazırlanışını sizinle paylaşıyoruz. Malzemeler, adımlar ve yıllardır denenmiş püf noktalarıyla.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <h2 style="margin-bottom:26px" class="reveal">Tarif arşivi</h2>
+    <div class="recipe-grid" id="recipeIndex"></div>
+  </div>
+</section>
+
+<div id="recipeDetails"></div>
+
+<div id="footer-slot"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  HEUI.mountChrome("recipes");
+
+  const withRecipe = HE.dishesWithRecipe();
+
+  // Tarif dizini kartları
+  document.getElementById("recipeIndex").innerHTML = withRecipe.map(d=>{
+    const cat = HE.CATEGORIES.find(c=>c.id===d.cat);
+    return `<a class="recipe-card card reveal" href="#${d.id}">
+      <span class="thumb" style="background:${cat.grad}">${HEUI.icon(cat.icon)}</span>
+      <div>
+        <h3>${d.name}</h3>
+        <div class="meta">
+          <span>${HEUI.icon('clock')} ${d.recipe.sure}</span>
+          <span>${HEUI.icon('spoon')} ${d.recipe.kisi}</span>
+        </div>
+      </div>
+    </a>`;
+  }).join("");
+
+  // Tarif detayları (her tarif bir bölüm)
+  document.getElementById("recipeDetails").innerHTML = withRecipe.map((d,idx)=>{
+    const cat = HE.CATEGORIES.find(c=>c.id===d.cat);
+    const bg = idx % 2 ? "section-soft" : "";
+    const steps = d.recipe.adimlar.map(s=>`<li>${s}</li>`).join("");
+    const ingChips = (d.ingredients||[]).map(i=>`<span class="chip">${i}</span>`).join("");
+    const allerg = (d.allergens && d.allergens.length)
+      ? `<p style="font-size:.88rem;color:var(--ink-faint);margin-top:12px">Alerjen: ${d.allergens.map(a=>HE.ALLERGENS[a].label).join(", ")}</p>` : "";
+    return `
+    <section class="section ${bg}" id="${d.id}" style="scroll-margin-top:calc(var(--nav-h) + 24px)">
+      <div class="wrap two-col">
+        <div class="reveal">
+          <span class="eyebrow">${cat.name}</span>
+          <h2 style="margin:10px 0 4px">${d.name}</h2>
+          <div class="recipe-meta">
+            <span class="m">${HEUI.icon('clock')} ${d.recipe.sure}</span>
+            <span class="m">${HEUI.icon('spoon')} ${d.recipe.kisi}</span>
+          </div>
+          <p style="color:var(--ink-soft);margin:14px 0 24px">${d.story||""}</p>
+          <ol class="steps">${steps}</ol>
+          ${d.recipe.ipucu ? `<div class="tip-box" style="margin-top:18px"><span>${HEUI.icon('info')}</span><div><b>Püf noktası:</b> ${d.recipe.ipucu}</div></div>` : ""}
+        </div>
+        <div class="side-stack">
+          <div class="dish-media" style="border-radius:var(--r-lg);box-shadow:var(--sh-md);aspect-ratio:4/3">
+            <div class="ph" style="--ph-grad:${cat.grad}">${HEUI.icon(cat.icon)}</div>
+          </div>
+          <div class="info-card reveal d1">
+            <h3>${HEUI.icon('leaf')} İçindekiler</h3>
+            <div class="ing-list">${ingChips}</div>
+            ${allerg}
+          </div>
+          <a class="btn btn-ghost" href="urun.html?id=${d.id}">${HEUI.icon('arrow')} Ürün sayfasına git</a>
+        </div>
+      </div>
+    </section>`;
+  }).join("");
+
+  HEUI.initReveal();
+</script>
+</body>
+</html>

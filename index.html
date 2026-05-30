@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hünerli Eller — Kırıkkale Delice Ev Yemekleri Restoranı</title>
+<meta name="description" content="Hünerli Eller, Kırıkkale Delice'de kadın girişimcilerin emeğiyle hazırlanan ev yemekleri restoranı. Bol sulu yemekler, fırın lezzetleri, çorbalar ve gözlemeler. Menü her gün değişir.">
+<meta name="keywords" content="Hünerli Eller, Kırıkkale ev yemekleri, Delice restoran, sulu yemek, gözleme, çorba, kadın emeği">
+<meta property="og:title" content="Hünerli Eller — Kırıkkale Delice Ev Yemekleri">
+<meta property="og:description" content="Kadın eliyle, özenle hazırlanan ev sıcaklığında lezzetler.">
+<meta property="og:type" content="restaurant">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  /* ---------- Hero slider ---------- */
+  .hero { position: relative; height: 100svh; min-height: 600px; max-height: 940px; overflow: hidden; }
+  .slides { position: absolute; inset: 0; }
+  .slide {
+    position: absolute; inset: 0; opacity: 0; visibility: hidden;
+    transition: opacity 1.1s ease, visibility 1.1s;
+    display: grid; place-items: center; text-align: center;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+  .slide .bg { position: absolute; inset: 0; transform: scale(1.06); transition: transform 7s ease; }
+  .slide.active .bg { transform: scale(1); }
+  .slide .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .slide .bg::after { content:""; position:absolute; inset:0; z-index: 1; background: linear-gradient(180deg, rgba(28,18,10,.42), rgba(26,16,9,.66)); }
+  .slide-1 .bg { background: radial-gradient(120% 100% at 80% 10%, #E8A982, transparent 55%), linear-gradient(135deg, #C0552E, #9B3F1F); }
+  .slide-2 .bg { background: radial-gradient(120% 100% at 20% 10%, #D89A5E, transparent 55%), linear-gradient(135deg, #9B3F1F, #6e2c14); }
+  .slide-3 .bg { background: radial-gradient(120% 100% at 70% 90%, #8FA05E, transparent 55%), linear-gradient(135deg, #5E6B43, #3a4427); }
+  .slide .inner { position: relative; z-index: 2; color: #fff; width: min(100% - 48px, 880px); transform: translateY(20px); opacity: 0; transition: transform 1s .3s, opacity 1s .3s; }
+  .slide.active .inner { transform: none; opacity: 1; }
+  .slide .kicker { font-family: var(--font-hand); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--gold-soft); display: block; margin-bottom: 6px; }
+  .slide h1 { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.3); margin-bottom: 18px; }
+  .slide p { color: rgba(255,255,255,.92); font-size: clamp(1.05rem, 1.8vw, 1.35rem); max-width: 620px; margin: 0 auto 30px; }
+  .slide .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-overlay-top { background: linear-gradient(180deg, rgba(20,12,6,.35), transparent); position: absolute; top: 0; left: 0; right: 0; height: 140px; z-index: 3; pointer-events: none; }
+  .hero-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: 10px; }
+  .hero-dots button { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.45); transition: .25s; }
+  .hero-dots button.active { background: #fff; width: 30px; border-radius: 6px; }
+  .hero-arrows { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+  .hero-arrows button {
+    pointer-events: auto; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,.16);
+    backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.4); color: #fff;
+    display: grid; place-items: center; transition: background .2s;
+  }
+  .hero-arrows button:hover { background: rgba(255,255,255,.3); }
+  .hero-arrows .prev { left: 22px; } .hero-arrows .next { right: 22px; }
+  .hero-arrows svg { width: 24px; height: 24px; }
+  @media (max-width: 680px){ .hero-arrows { display: none; } }
+  .hero-badge {
+    position: absolute; top: calc(var(--nav-h) + 14px); left: 50%; transform: translateX(-50%); z-index: 5;
+    background: rgba(255,255,255,.16); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.34);
+    color: #fff; padding: 8px 18px; border-radius: var(--r-pill); font-size: .82rem; font-weight: 600;
+    display: inline-flex; gap: 8px; align-items: center; letter-spacing: .04em;
+  }
+  .hero-badge svg { width: 16px; height: 16px; color: var(--gold-soft); }
+
+  .notice-wrap { margin-top: -42px; position: relative; z-index: 20; }
+
+  .feature-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 760px){ .feature-strip { grid-template-columns: 1fr 1fr; } }
+  .feature { text-align: center; padding: 8px; }
+  .feature .ic { width: 56px; height: 56px; border-radius: 18px; background: var(--cream-2); color: var(--terra); display: grid; place-items: center; margin: 0 auto 12px; }
+  .feature .ic svg { width: 28px; height: 28px; }
+  .feature b { display: block; font-family: var(--font-display); font-size: 1.1rem; }
+  .feature span { font-size: .88rem; color: var(--ink-soft); }
+
+  .cta-band {
+    border-radius: var(--r-xl); padding: clamp(40px, 6vw, 72px); text-align: center; color: #fff; position: relative; overflow: hidden;
+    background: radial-gradient(120% 140% at 10% 0%, var(--terra) , var(--terra-deep) 70%);
+    box-shadow: var(--sh-lg);
+  }
+  .cta-band::after { content:""; position:absolute; inset:0; background: radial-gradient(50% 80% at 90% 100%, rgba(255,255,255,.14), transparent 60%); }
+  .cta-band h2 { color: #fff; position: relative; z-index: 1; }
+  .cta-band p { color: rgba(255,255,255,.92); position: relative; z-index: 1; max-width: 560px; margin: 14px auto 28px; }
+  .cta-band .actions { position: relative; z-index: 1; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-band .btn-ghost { background: #fff; }
+  .section-soft { background: linear-gradient(180deg, var(--cream), var(--cream-2)); }
+
+  /* Hakkımızda görsel karuseli */
+  .about-carousel { position: relative; }
+  .ac-slide {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transform: scale(1.06); z-index: 1;
+    transition: opacity 1.1s ease;
+  }
+  .ac-slide.active { opacity: 1; transform: scale(1); transition: opacity 1.1s ease, transform 6s ease-out; }
+  .ac-shade { position: absolute; left: 0; right: 0; bottom: 0; height: 44%; z-index: 2;
+    background: linear-gradient(180deg, transparent, rgba(40,25,14,.55)); pointer-events: none; }
+  .ac-cap { position: absolute; left: 0; right: 0; bottom: 36px; z-index: 3; text-align: center;
+    color: #fff; font-family: var(--font-display); font-size: 1.25rem; letter-spacing: .4px;
+    text-shadow: 0 2px 14px rgba(0,0,0,.5); pointer-events: none; }
+  .ac-dots { position: absolute; bottom: 16px; left: 0; right: 0; z-index: 3;
+    display: flex; gap: 8px; justify-content: center; }
+  .ac-dots button { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.55); transition: .25s; }
+  .ac-dots button.active { background: #fff; width: 24px; border-radius: 5px; }
+
+  /* Tanıtım videosu (gömülü animasyon) */
+  .video-band { aspect-ratio: 16/9; min-height: 320px; background: #1c140d; }
+  .video-band::before { display: none; }
+  .promo-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .video-ctrl {
+    position: absolute; right: 18px; bottom: 18px; z-index: 3;
+    width: 52px; height: 52px; border-radius: 50%; color: #fff;
+    background: rgba(28,20,13,.5); backdrop-filter: blur(6px); border: 1.5px solid rgba(255,255,255,.45);
+    display: grid; place-items: center; transition: background .2s, transform .2s;
+  }
+  .video-ctrl:hover { background: rgba(28,20,13,.7); transform: scale(1.06); }
+  .video-ctrl svg { width: 24px; height: 24px; }
+</style>
+</head>
+<body class="has-dark-hero">
+<div id="nav-slot"></div>
+
+<!-- ====================== HERO SLIDER ====================== -->
+<section class="hero" aria-label="Tanıtım slaytı">
+  <div class="hero-overlay-top"></div>
+  <span class="hero-badge" id="heroBadge"></span>
+  <div class="slides" id="slides">
+    <div class="slide slide-1 active">
+      <div class="bg"><img src="assets/img/gallery/hero-ev-yemekleri.jpg" alt="" onerror="this.remove()"></div>
+      <div class="inner">
+        <span class="kicker">Kadın eliyle, sevgiyle…</span>
+        <h1>Ev Sıcaklığında<br>Tarifsiz Lezzetler</h1>
+        <p>Kırıkkale Delice'de, kadın girişimcilerin özenle hazırladığı gerçek ev yemekleri. Her tabakta emek, her lokmada sıcaklık.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-lg" href="menu.html"></a>
+          <a class="btn btn-ghost btn-lg" href="#hakkimizda">Hikâyemiz</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="bg"><img src="assets/img/gallery/hero-sulu-yemekler.jpg" alt="" onerror="this.remove()"></div>
+      <div class="inner">
+        <span class="kicker">Bol sulu, bol fırın…</span>
+        <h1>Sulu &amp; Fırın<br>Yemekleri</h1>
+        <p>Tas kebaptan güvece, fırın tavuğundan etli kuru fasulyeye; ocakta usul usul, fırında özenle pişen sofralık lezzetler.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-lg" href="menu.html#sulu"></a>
+          <a class="btn btn-ghost btn-lg" href="tel:+905358899362">Bizi Arayın</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-3">
+      <div class="bg"><img src="assets/img/gallery/hero-corbalar-gozleme.jpg" alt="" onerror="this.remove()"></div>
+      <div class="inner">
+        <span class="kicker">Sıcacık &amp; incecik…</span>
+        <h1>Çorbalar &amp;<br>El Açması Gözlemeler</h1>
+        <p>Günün çorbasından arabaşına, ıspanaklıdan kaşarlıya incecik açılan gözlemeler — her gün taze, her gün el emeği.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-lg" href="menu.html#gozleme"></a>
+          <a class="btn btn-ghost btn-lg" href="iletisim.html">Yol Tarifi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-arrows">
+    <button class="prev" id="heroPrev" aria-label="Önceki"></button>
+    <button class="next" id="heroNext" aria-label="Sonraki"></button>
+  </div>
+  <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slayt seçimi"></div>
+</section>
+
+<!-- ====================== GÜNLÜK MENÜ UYARISI ====================== -->
+<div class="wrap notice-wrap">
+  <div id="daily-slot"></div>
+</div>
+
+<!-- ====================== ÖZELLİK ŞERİDİ ====================== -->
+<section class="section" style="padding-top:64px">
+  <div class="wrap">
+    <div class="feature-strip">
+      <div class="feature reveal"><span class="ic" data-ic="heart"></span><b>Kadın Emeği</b><span>Her şey kadın eliyle</span></div>
+      <div class="feature reveal d1"><span class="ic" data-ic="leaf"></span><b>Taze &amp; Günlük</b><span>Her gün ocaktan</span></div>
+      <div class="feature reveal d2"><span class="ic" data-ic="soup"></span><b>Bol Sulu Yemek</b><span>Ev usulü kıvamda</span></div>
+      <div class="feature reveal d3"><span class="ic" data-ic="grill"></span><b>Fırın Lezzeti</b><span>Özenle pişen</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== HAKKIMIZDA ====================== -->
+<section class="section section-soft" id="hakkimizda">
+  <div class="wrap about-grid">
+    <div class="about-text reveal">
+      <span class="eyebrow">Hikâyemiz</span>
+      <h2 style="margin:12px 0 18px">Hünerli ellerin<br>buluştuğu sofra</h2>
+      <span class="hand">el emeği, göz nuru…</span>
+      <p>Hünerli Eller, Kırıkkale'nin Delice ilçesinde <b>kadın girişimciler</b> tarafından kurulmuş bir ev yemekleri mutfağıdır. Bizim için yemek, yalnızca bir tabak değil; sabırla, sevgiyle ve hünerle hazırlanan bir emektir.</p>
+      <p>Burada her şey <b>tamamen kadın eliyle</b> hazırlanır. Bol sulu yemekler, fırında usul usul pişen lezzetler ve nesilden nesile aktarılan tariflerle ev sıcaklığını sofranıza taşıyoruz.</p>
+      <div class="about-points">
+        <div class="about-point"><span class="ic" data-ic="heart"></span><div><b>Kadın girişimci ruhu</b><span>Üreten, paylaşan, dayanışan kadınların mutfağı.</span></div></div>
+        <div class="about-point"><span class="ic" data-ic="spoon"></span><div><b>Gerçek ev lezzeti</b><span>Hazır değil; günlük, taze ve el yapımı.</span></div></div>
+        <div class="about-point"><span class="ic" data-ic="clock"></span><div><b>Her gün değişen menü</b><span>Mevsimine ve güne göre taze seçenekler.</span></div></div>
+      </div>
+    </div>
+    <div class="about-visual reveal d1">
+      <div class="frame about-carousel" id="aboutCarousel">
+        <span class="ic" data-ic="spoon"></span>
+        <img class="ac-slide active" data-label="Hünerli Eller Mutfağı" alt="Hünerli Eller restoran mutfağı" loading="eager"
+          src="assets/img/restaurant.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Mercimek Çorbası" alt="Mercimek Çorbası" loading="lazy"
+          src="assets/img/gallery/about-mercimek-corbasi.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Arabaşı Çorbası" alt="Arabaşı Çorbası" loading="lazy"
+          src="assets/img/gallery/hero-corbalar-gozleme.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Tas Kebabı" alt="Tas Kebabı" loading="lazy"
+          src="assets/img/gallery/about-tas-kebabi.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Türlü" alt="Türlü" loading="lazy"
+          src="assets/img/gallery/about-turlu.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Tandır" alt="Tandır" loading="lazy"
+          src="assets/img/gallery/about-tandir.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <img class="ac-slide" data-label="Izgara Köfte" alt="Izgara Köfte" loading="lazy"
+          src="assets/img/gallery/about-izgara-kofte.jpg"
+          onload="this.classList.add('ok')" onerror="this.remove()">
+        <span class="ac-shade"></span>
+        <span class="ac-cap" id="acCap"></span>
+        <div class="ac-dots" id="acDots"></div>
+      </div>
+      <div class="about-badge">
+        <span class="ic" data-ic="heart"></span>
+        <div><b>Sevgiyle</b><span>Kadın eliyle hazırlanır</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== KATEGORİLER ====================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mutfağımızdan</span>
+      <h2>Sofranızda neler var?</h2>
+      <p class="lead">Çorbalardan sulu yemeklere, gözlemelerden tatlılara… İşte her gün özenle hazırladığımız lezzet dünyamız.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ====================== VİDEO ====================== -->
+<section class="section section-soft">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mutfağımızı tanıyın</span>
+      <h2>Tanıtım videomuz</h2>
+      <p class="lead">Hünerli Eller'i kısa bir tanıtımla keşfedin — kadın eliyle, ev sıcaklığında.</p>
+    </div>
+    <div class="video-band reveal">
+      <iframe class="promo-frame" id="promoFrame" src="tanitim.html" title="Hünerli Eller tanıtım videosu" loading="lazy"></iframe>
+      <button class="video-ctrl" id="videoCtrl" aria-label="Videoyu duraklat/oynat" aria-pressed="false"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== İLETİŞİM + HARİTA ====================== -->
+<section class="section" id="iletisim">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Bize ulaşın</span>
+      <h2>Adres &amp; İletişim</h2>
+      <p class="lead">Kırıkkale Delice'deyiz. Gelmeden önce aramanız, aradığınız lezzeti bulmanızı sağlar.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-list reveal">
+        <a class="contact-row" href="https://maps.google.com/maps?q=39.9577,34.0286" target="_blank" rel="noopener">
+          <span class="ic" data-ic="pin"></span>
+          <span><span class="lbl">Adres</span><span class="val">Mimarsinan Mah. Atatürk Bulvarı No: A2, Delice / Kırıkkale</span></span>
+        </a>
+        <a class="contact-row" href="tel:+905358899362">
+          <span class="ic" data-ic="phone"></span>
+          <span><span class="lbl">Telefon</span><span class="val">0535 889 93 62</span></span>
+        </a>
+        <a class="contact-row" href="https://wa.me/905358899362" target="_blank" rel="noopener">
+          <span class="ic" data-ic="whatsapp"></span>
+          <span><span class="lbl">WhatsApp</span><span class="val">Mesaj gönderin</span></span>
+        </a>
+        <a class="contact-row" href="https://www.instagram.com/delicehunerlieller/" target="_blank" rel="noopener">
+          <span class="ic" data-ic="instagram"></span>
+          <span><span class="lbl">Instagram</span><span class="val">@delicehunerlieller</span></span>
+        </a>
+      </div>
+      <div class="reveal d1">
+        <div class="map-frame">
+          <iframe title="Hünerli Eller konum haritası" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=34.0146%2C39.9487%2C34.0426%2C39.9667&layer=mapnik&marker=39.9577%2C34.0286"></iframe>
+        </div>
+<div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><a class="btn btn-ghost" style="flex:1;justify-content:center" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.9577%2C34.0286&amp;travelmode=driving" target="_blank" rel="noopener" data-ic-pre="pin">Google Haritalar</a><a class="btn btn-olive" style="flex:1;justify-content:center" id="idxWaNav" href="#">WhatsApp Yol Tarifi</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CTA ====================== -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Bugün ne pişti, hemen öğrenin</h2>
+      <p>Menümüz her gün değiştiği için, aradığınız yemeği bulmak için bizi aramanız yeterli. Dijital menümüze de göz atabilirsiniz.</p>
+      <div class="actions">
+        <a class="btn btn-ghost btn-lg" href="tel:+905358899362" data-ic-pre="phone">0535 889 93 62</a>
+        <a class="btn btn-olive btn-lg" href="menu.html" data-ic-pre="qr">QR Menüyü Aç</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  HEUI.mountChrome("home");
+
+  // Günlük banner
+  document.getElementById("daily-slot").innerHTML = HEUI.buildDailyBanner(true);
+
+  // Hero butonlarına metin + ikon
+  document.querySelectorAll(".slide .actions .btn-primary").forEach(b=>{
+    b.innerHTML = HEUI.icon("qr") + " Menüyü Gör";
+  });
+  document.getElementById("heroPrev").innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>';
+  document.getElementById("heroNext").innerHTML = HEUI.icon("arrow");
+
+  // İkon yer tutucuları doldur
+  document.querySelectorAll("[data-ic]").forEach(el=> el.innerHTML = HEUI.icon(el.dataset.ic));
+  document.querySelectorAll("[data-ic-pre]").forEach(el=> el.insertAdjacentHTML("afterbegin", HEUI.icon(el.dataset.icPre)));
+
+  // WhatsApp yol tarifi butonu
+  const waNav = document.getElementById("idxWaNav");
+  if (waNav) {
+    const I = HEUI.HE_INFO;
+    waNav.href = "https://wa.me/" + I.whatsapp + "?text=" + encodeURIComponent(I.waNavMsg);
+    waNav.insertAdjacentHTML("afterbegin", HEUI.icon("whatsapp"));
+  }
+
+  // Hero badge
+  document.getElementById("heroBadge").innerHTML = HEUI.icon("pin") + " Kırıkkale · Delice";
+
+  // Kategori kartları
+  const catGrid = document.getElementById("catGrid");
+  catGrid.innerHTML = HE.CATEGORIES.map((c,i)=>{
+    const count = HE.dishesByCat(c.id).length;
+    const anchor = c.id;
+    return `<a class="cat-card reveal ${i%4?('d'+(i%4)):''}" style="background:${c.grad}" href="menu.html#${anchor}">
+      <span class="cat-ic">${HEUI.icon(c.icon)}</span>
+      <span class="cat-tag">${c.tag}</span>
+      <h3>${c.name}</h3>
+      <span class="cat-count">${count} çeşit</span>
+    </a>`;
+  }).join("");
+
+  // Slider
+  (function(){
+    const slides = [...document.querySelectorAll(".slide")];
+    const dotsWrap = document.getElementById("heroDots");
+    let i = 0, timer;
+    slides.forEach((_,idx)=>{
+      const b = document.createElement("button");
+      b.setAttribute("role","tab");
+      b.setAttribute("aria-label", "Slayt " + (idx+1));
+      if (idx===0) b.classList.add("active");
+      b.addEventListener("click", ()=>{ go(idx); reset(); });
+      dotsWrap.appendChild(b);
+    });
+    const dots = [...dotsWrap.children];
+    function go(n){
+      slides[i].classList.remove("active"); dots[i].classList.remove("active");
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add("active"); dots[i].classList.add("active");
+    }
+    function reset(){ clearInterval(timer); timer = setInterval(()=>go(i+1), 5500); }
+    document.getElementById("heroNext").addEventListener("click", ()=>{ go(i+1); reset(); });
+    document.getElementById("heroPrev").addEventListener("click", ()=>{ go(i-1); reset(); });
+    reset();
+  })();
+
+  HEUI.initReveal();
+
+  // Hakkımızda görsel karuseli
+  (function(){
+    const wrap = document.getElementById("aboutCarousel");
+    const dotsWrap = document.getElementById("acDots");
+    const cap = document.getElementById("acCap");
+    if(!wrap) return;
+    const slides = [...wrap.querySelectorAll(".ac-slide")];
+    function setCap(){ if(cap && slides[i]) cap.textContent = slides[i].dataset.label || ""; }
+    if(slides.length < 2){ if(dotsWrap) dotsWrap.style.display="none"; }
+    let i = 0;
+    setCap();
+    if(slides.length < 2) return;
+    let timer;
+    slides.forEach((_,idx)=>{
+      const b = document.createElement("button");
+      b.setAttribute("aria-label", "Görsel " + (idx+1));
+      if(idx===0) b.classList.add("active");
+      b.addEventListener("click", ()=>{ go(idx); restart(); });
+      dotsWrap.appendChild(b);
+    });
+    const dots = [...dotsWrap.children];
+    function go(n){
+      slides[i].classList.remove("active"); dots[i].classList.remove("active");
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add("active"); dots[i].classList.add("active");
+      setCap();
+    }
+    function restart(){ clearInterval(timer); timer = setInterval(()=>go(i+1), 3800); }
+    restart();
+  })();
+  (function(){
+    const frame = document.getElementById("promoFrame");
+    const ctrl = document.getElementById("videoCtrl");
+    const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+    const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+    let playing = true;
+    ctrl.innerHTML = ICON_PAUSE;
+    ctrl.addEventListener("click", ()=>{
+      playing = !playing;
+      frame.contentWindow.postMessage(playing ? "he-play" : "he-pause", "*");
+      ctrl.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+      ctrl.setAttribute("aria-pressed", playing ? "false" : "true");
+    });
+  })();
+</script>
+</body>
+</html>

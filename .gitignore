@@ -1,0 +1,19 @@
+# Geçici ve gereksiz dosyalar
+screenshots/
+*.log
+devserver.log
+_*.txt
+serve-*.ps1
+assets/css/_gfonts_raw.css
+
+# Claude Code iç klasörü
+.claude/
+
+# Node (varsa)
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

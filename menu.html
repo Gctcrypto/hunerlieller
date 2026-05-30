@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dijital Menü — Hünerli Eller | Kırıkkale Delice Ev Yemekleri</title>
+<meta name="description" content="Hünerli Eller dijital menüsü: çorbalar, sulu yemekler, pilavlar, ızgara & fırın, gözlemeler, tostlar, tatlılar ve içecekler. Tüm ürünlerin içindekiler ve alerjen bilgileri.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Ana Sayfa</a> / Menü</p>
+    <span class="eyebrow">Dijital Menü</span>
+    <h1>Bugün sofrada neler var?</h1>
+    <p class="lead">Tüm lezzetlerimiz, içindekileri ve alerjen bilgileriyle. QR kodu okuttuysanız hoş geldiniz — afiyet olsun!</p>
+  </div>
+</header>
+
+<!-- Kategori sekmeleri -->
+<nav class="menu-nav" id="menuNav" aria-label="Menü kategorileri">
+  <div class="wrap" id="menuNavInner"></div>
+</nav>
+
+<section class="section" style="padding-top:40px">
+  <div class="wrap">
+    <!-- Günlük menü uyarısı -->
+    <div id="daily-slot"></div>
+
+    <!-- Alerjen lejantı -->
+    <div class="allergen-legend reveal" style="margin-top:24px">
+      <h3 id="legendTitle">Alerjen Bilgilendirmesi</h3>
+      <p>Aşağıdaki ürünlerde belirtilen alerjenler bulunabilir. Gıda alerjiniz veya hassasiyetiniz varsa lütfen sipariş öncesi personelimize danışın. Üretim ortamında çapraz bulaşma olabilir.</p>
+      <div class="legend-items" id="legendItems"></div>
+    </div>
+
+    <!-- Kategoriler -->
+    <div id="menuContent"></div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  HEUI.mountChrome("menu");
+  document.getElementById("daily-slot").innerHTML = HEUI.buildDailyBanner(true);
+  document.getElementById("legendTitle").insertAdjacentHTML("afterbegin", HEUI.icon("info"));
+
+  // Alerjen lejantı
+  document.getElementById("legendItems").innerHTML = Object.values(HE.ALLERGENS).map(a =>
+    `<span class="allergen-tag"><span class="dot"></span>${a.label}</span>`
+  ).join("");
+
+  // Kategori sekmeleri
+  document.getElementById("menuNavInner").innerHTML = HE.CATEGORIES.map(c =>
+    `<a href="#${c.id}" data-cat="${c.id}">${HEUI.icon(c.icon)} ${c.name}</a>`
+  ).join("");
+
+  // Menü içeriği
+  document.getElementById("menuContent").innerHTML = HE.CATEGORIES.map(c => {
+    const dishes = HE.dishesByCat(c.id);
+    const cards = dishes.map(d => HEUI.dishCard(d)).join("");
+    return `
+    <section class="menu-cat" id="${c.id}">
+      <div class="menu-cat-head reveal">
+        <span class="ic" style="background:${c.grad}">${HEUI.icon(c.icon)}</span>
+        <div><h2>${c.name}</h2><span class="ct">${c.tag} · ${dishes.length} çeşit</span></div>
+      </div>
+      <div class="dish-grid">${cards}</div>
+    </section>`;
+  }).join("");
+
+  // Aktif sekme takibi
+  const navLinks = [...document.querySelectorAll("#menuNavInner a")];
+  const sections = HE.CATEGORIES.map(c => document.getElementById(c.id));
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting){
+        navLinks.forEach(l=>l.classList.toggle("active", l.dataset.cat === e.target.id));
+        const active = navLinks.find(l=>l.dataset.cat===e.target.id);
+        if (active){
+          const bar = document.getElementById("menuNavInner");
+          bar.scrollTo({ left: active.offsetLeft - bar.clientWidth/2 + active.clientWidth/2, behavior: "smooth" });
+        }
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach(s=> s && spy.observe(s));
+
+  HEUI.initReveal();
+</script>
+</body>
+</html>

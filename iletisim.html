@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>İletişim — Hünerli Eller | Kırıkkale Delice</title>
+<meta name="description" content="Hünerli Eller iletişim: Mimarsinan Mahallesi Atatürk Bulvarı No: A2, Delice / Kırıkkale. Telefon, WhatsApp, Instagram ve harita.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Ana Sayfa</a> / İletişim</p>
+    <span class="eyebrow">Bize Ulaşın</span>
+    <h1>Sizi soframızda görmek isteriz</h1>
+    <p class="lead">Kırıkkale Delice'deyiz. Aradığınız lezzeti bulmak için gelmeden önce aramanız yeterli — menümüz her gün değişir.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-list" id="contactList"></div>
+        <div style="margin-top:18px" id="hours-card"></div>
+      </div>
+      <div class="reveal d1">
+        <div class="map-frame">
+          <iframe title="Hünerli Eller konum haritası" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=34.0146%2C39.9487%2C34.0426%2C39.9667&layer=mapnik&marker=39.9577%2C34.0286"></iframe>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <a class="btn btn-ghost" style="flex:1;justify-content:center" id="dirBtn" href="https://www.google.com/maps/dir/?api=1&destination=39.9577%2C34.0286&travelmode=driving" target="_blank" rel="noopener">Google Haritalar</a>
+          <a class="btn btn-olive" style="flex:1;justify-content:center" id="waNavBtn" href="#" target="_blank" rel="noopener">WhatsApp Yol Tarifi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="wrap" style="max-width:760px">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mesaj Bırakın</span>
+      <h2>Bize yazın</h2>
+      <p class="lead">Rezervasyon, sipariş veya merak ettikleriniz için formu doldurun; en kısa sürede dönüş yapalım.</p>
+    </div>
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="field"><label for="ad">Adınız Soyadınız</label><input id="ad" name="ad" type="text" required placeholder="Adınız"></div>
+        <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel" required placeholder="05xx xxx xx xx"></div>
+      </div>
+      <div class="field"><label for="konu">Konu</label><input id="konu" name="konu" type="text" placeholder="Rezervasyon / Sipariş / Soru"></div>
+      <div class="field"><label for="mesaj">Mesajınız</label><textarea id="mesaj" name="mesaj" required placeholder="Mesajınızı yazın..."></textarea></div>
+      <div class="form-ok" id="formOk"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Mesajı Gönder</button>
+        <a class="btn btn-olive btn-lg" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp'tan Gönder</a>
+      </div>
+      <p style="font-size:.82rem;color:var(--ink-faint)">Form bilgileriniz, size geri dönüş yapabilmemiz için kullanılır. Gönder'e bastığınızda mesajınız WhatsApp üzerinden iletilmek üzere hazırlanır.</p>
+    </form>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  HEUI.mountChrome("contact");
+  const I = HEUI.HE_INFO;
+
+  document.getElementById("contactList").innerHTML = `
+    <a class="contact-row reveal" href="${I.mapsUrl}" target="_blank" rel="noopener">
+      <span class="ic">${HEUI.icon('pin')}</span>
+      <span><span class="lbl">Adres</span><span class="val">${I.addressLine1}, ${I.addressLine2}</span></span>
+    </a>
+    <a class="contact-row reveal d1" href="tel:${I.phoneTel}">
+      <span class="ic">${HEUI.icon('phone')}</span>
+      <span><span class="lbl">Telefon</span><span class="val">${I.phoneDisplay}</span></span>
+    </a>
+    <a class="contact-row reveal d1" href="https://wa.me/${I.whatsapp}" target="_blank" rel="noopener">
+      <span class="ic">${HEUI.icon('whatsapp')}</span>
+      <span><span class="lbl">WhatsApp</span><span class="val">Hemen mesaj gönderin</span></span>
+    </a>
+    <a class="contact-row reveal d2" href="${I.instagram}" target="_blank" rel="noopener">
+      <span class="ic">${HEUI.icon('instagram')}</span>
+      <span><span class="lbl">Instagram</span><span class="val">${I.instagramHandle}</span></span>
+    </a>
+    <a class="contact-row reveal d2" href="mailto:${I.email}">
+      <span class="ic">${HEUI.icon('mail')}</span>
+      <span><span class="lbl">E-posta</span><span class="val">${I.email}</span></span>
+    </a>`;
+
+  document.getElementById("hours-card").innerHTML = `
+    <div class="info-card reveal d1">
+      <h3>${HEUI.icon('clock')} Günün Lezzeti</h3>
+      <p style="color:var(--ink-soft);font-size:.96rem">Menümüz her gün değişir. Sulu yemekler genellikle öğle saatlerinde tazedir; özel bir yemek için önceden arayarak sipariş verebilirsiniz.</p>
+    </div>`;
+
+  document.querySelectorAll("[data-ic]").forEach(el=> el.innerHTML = HEUI.icon(el.dataset.ic));
+  document.getElementById("dirBtn").insertAdjacentHTML("afterbegin", HEUI.icon("pin"));
+  document.getElementById("formOk").insertAdjacentHTML("afterbegin", HEUI.icon("check"));
+  // WhatsApp yol tarifi butonu
+  const waNavBtn = document.getElementById("waNavBtn");
+  waNavBtn.href = "https://wa.me/" + I.whatsapp + "?text=" + encodeURIComponent(I.waNavMsg);
+  waNavBtn.insertAdjacentHTML("afterbegin", HEUI.icon("whatsapp"));
+
+  // Form → WhatsApp
+  const form = document.getElementById("contactForm");
+  const waBtn = document.getElementById("waBtn");
+  function buildWaLink(){
+    const ad = encodeURIComponent(document.getElementById("ad").value || "");
+    const tel = encodeURIComponent(document.getElementById("tel").value || "");
+    const konu = encodeURIComponent(document.getElementById("konu").value || "");
+    const mesaj = encodeURIComponent(document.getElementById("mesaj").value || "");
+    const text = `Merhaba, ben ${ad}. Konu: ${konu}. ${mesaj} (Tel: ${tel})`;
+    return `https://wa.me/${I.whatsapp}?text=${encodeURIComponent(text)}`.replace("%2520","%20");
+  }
+  function updateWa(){ waBtn.href = `https://wa.me/${I.whatsapp}?text=` + encodeURIComponent(
+    `Merhaba, ben ${document.getElementById("ad").value||"..."}. Konu: ${document.getElementById("konu").value||"-"}. ${document.getElementById("mesaj").value||""} (Tel: ${document.getElementById("tel").value||"-"})`
+  ); }
+  form.addEventListener("input", updateWa); updateWa();
+
+  form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    if (!form.checkValidity()){ form.reportValidity(); return; }
+    window.open(waBtn.href, "_blank");
+    document.getElementById("formOk").classList.add("show");
+    document.getElementById("formOk").innerHTML = HEUI.icon("check") + " Teşekkürler! Mesajınız WhatsApp üzerinden iletilmek üzere açıldı.";
+  });
+
+  HEUI.initReveal();
+</script>
+</body>
+</html>

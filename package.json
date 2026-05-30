@@ -1,0 +1,13 @@
+{
+  "name": "hunerlieller",
+  "version": "1.0.0",
+  "description": "Hünerli Eller — Kırıkkale Delice Ev Yemekleri statik web sitesi",
+  "private": true,
+  "scripts": {
+    "start": "npx serve -s . -l ${PORT:-3000} --no-clipboard",
+    "dev": "npx serve -s . -l 3000 --no-clipboard"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
