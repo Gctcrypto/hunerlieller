@@ -1,6 +1,6 @@
-# Nixpacks yapılandırması — Hünerli Eller statik site
-# Coolify'de Build Pack olarak "Nixpacks" seçildiğinde bu dosya kullanılır.
-# Docker tercih edilirse Dockerfile otomatik algılanır.
+# Nixpacks — Hünerli Eller statik site (çok sayfalı)
+# Coolify Build Pack: Nixpacks seçildiğinde kullanılır.
+# NOT: -s (SPA modu) OLMADAN çalışır — çok sayfalı HTML sitesi
 
 providers = ["node"]
 
@@ -8,4 +8,4 @@ providers = ["node"]
 cmds = []
 
 [start]
-cmd = "npx serve -s . -l ${PORT:-3000} --no-clipboard"
+cmd = "npx serve . -l ${PORT:-3000} --no-clipboard"

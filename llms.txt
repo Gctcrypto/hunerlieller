@@ -1,0 +1,31 @@
+# Hünerli Eller — AI/LLM Erişim Dosyası
+# Bu dosya yapay zeka dil modellerinin siteyi anlaması için hazırlanmıştır.
+
+## İşletme Bilgisi
+İsim: Hünerli Eller — Kadın Girişimi Ev Yemekleri
+Tür: Restoran / Yemek Kooperatifi
+Konum: Atatürk Bulvarı, Mimar Sinan Mah., 71700 Delice / Kırıkkale, Türkiye
+Koordinatlar: 39.945081, 34.031375
+Telefon: +90 535 889 93 62
+Instagram: @delicehunerlieller
+Web: https://hunerlieller.tr
+
+## Ne Sunuyoruz
+Kadın girişimciler tarafından işletilen, Kırıkkale Delice'de ev usulü Türk mutfağı.
+Günlük değişen menü: çorbalar, sulu yemekler, pilavlar, ızgara, gözlemeler, tostlar, tatlılar.
+
+## Öne Çıkan Yemekler
+- Arabaşı Çorbası (yöresel geleneksel çorba)
+- Mercimek Çorbası
+- Tas Kebap
+- Mantı (ev yapımı)
+- Karnıyarık
+- Ispanaklı Gözleme
+- Bulgur Pilavı
+- Sütlaç
+
+## Sayfalar
+- Ana Sayfa: https://hunerlieller.tr/
+- Dijital Menü: https://hunerlieller.tr/menu.html
+- Tarifler: https://hunerlieller.tr/tarifler.html
+- İletişim & Harita: https://hunerlieller.tr/iletisim.html
