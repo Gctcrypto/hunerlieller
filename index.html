@@ -114,7 +114,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
   /* ---------- Hero slider ---------- */
-  .hero { position: relative; height: 100svh; min-height: 600px; max-height: 940px; overflow: hidden; }
+  .hero { position: relative; height: 100svh; min-height: 600px; max-height: 940px; overflow: hidden; contain: layout paint; }
   @media (max-width: 480px) { .hero { min-height: min(100svh, 560px); height: 100svh; } }
   @media (max-width: 380px) { .hero { min-height: 100svh; } }
   .slides { position: absolute; inset: 0; }
@@ -124,7 +124,7 @@
     display: grid; place-items: center; text-align: center;
   }
   .slide.active { opacity: 1; visibility: visible; }
-  .slide .bg { position: absolute; inset: 0; transform: scale(1.06); transition: transform 7s ease; }
+  .slide .bg { position: absolute; inset: -3%; transform: scale(1.06); transition: transform 7s ease; }
   .slide.active .bg { transform: scale(1); }
   .slide .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .slide .bg::after { content:""; position:absolute; inset:0; z-index: 1; background: linear-gradient(180deg, rgba(28,18,10,.42), rgba(26,16,9,.66)); }
@@ -378,7 +378,7 @@
       <p class="lead">Hünerli Eller'i kısa bir tanıtımla keşfedin — kadın eliyle, ev sıcaklığında.</p>
     </div>
     <div class="video-band reveal">
-      <iframe class="promo-frame" id="promoFrame" src="tanitim.html" title="Hünerli Eller tanıtım videosu" loading="lazy"></iframe>
+      <iframe class="promo-frame" id="promoFrame" src="tanitim.html" title="Hünerli Eller tanıtım videosu" loading="lazy" scrolling="no"></iframe>
       <button class="video-ctrl" id="videoCtrl" aria-label="Videoyu duraklat/oynat" aria-pressed="false"></button>
     </div>
   </div>
