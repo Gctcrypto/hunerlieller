@@ -134,6 +134,12 @@ h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
 .brand-name { display: flex; flex-direction: column; line-height: 1.05; white-space: nowrap; }
 .brand-name b { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .5px; color: var(--ink); }
 .brand-name span { font-size: .64rem; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-top: 4px; }
+.brand-group { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.brand-divider { width: 1px; height: 30px; background: var(--line); flex: none; }
+.brand-venue { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .5px; color: var(--ink); white-space: nowrap; }
+.has-dark-hero .nav:not(.scrolled) .brand-venue { color: #fff; }
+.has-dark-hero .nav:not(.scrolled) .brand-divider { background: rgba(255,255,255,.4); }
+@media (max-width: 640px){ .brand-divider, .brand-venue { display: none; } }
 .nav-links { display: flex; align-items: center; gap: 6px; }
 .nav-links a {
   font-weight: 600; font-size: .96rem; color: var(--ink-soft);

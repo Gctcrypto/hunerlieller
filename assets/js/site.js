@@ -70,10 +70,14 @@ function buildNav(active){
   return `
   <header class="nav" id="siteNav">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="${HE_INFO.name} ana sayfa">
-        ${brandMark()}
-        <span class="brand-name"><b>Hünerli Eller</b><span>Ev Yemekleri</span></span>
-      </a>
+      <div class="brand-group">
+        <a class="brand" href="index.html" aria-label="${HE_INFO.name} ana sayfa">
+          ${brandMark()}
+          <span class="brand-name"><b>Hünerli Eller</b><span>Ev Yemekleri</span></span>
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-venue">Muhtar Suna'nın Yeri</span>
+      </div>
       <nav class="nav-links" id="navLinks" aria-label="Ana menü">
         ${linkHtml}
         <span class="nav-cta"><a class="btn btn-primary" href="menu.html">${icon('qr')} QR Menü</a></span>
